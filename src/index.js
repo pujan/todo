@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Container } from '@mui/material';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Container sx={{px: 10, py: 5}}>
+      <App />
+    </Container>
   </React.StrictMode>,
   document.getElementById('root')
 );
