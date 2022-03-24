@@ -11,27 +11,19 @@ export default function ItemList() {
     for (const elem of collection) {
       if (elem.id === id) {
         return elem;
-        // elem.active = false;
-        break;
       }
     }
-
-    // debugger;
-    // return collection;
   };
 
   const addTodo = useCallback((text) => {
-    console.log(text);
     setItems((prev) => ([...prev, {name: text, active: true, id: timestamp()}]));
   }, [setItems]);
 
   const delTodo = useCallback((id) => {
-    console.log(id);
     setItems(items.filter((item) => item.id !== id));
   }, [items, setItems]);
 
   const endTodo = useCallback((id) => {
-    console.log(id);
     const item = deactivate(items, id);
     item.active = false;
     setItems([...items]);
