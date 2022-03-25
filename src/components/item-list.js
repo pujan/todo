@@ -1,11 +1,14 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import Item from './item';
 import ItemAdd from './item-add';
 import { Stack } from '@mui/material';
+import { useLocalStorage } from './use-localstorage';
 
 export default function ItemList() {
   const timestamp = () => Math.floor(Date.now() / 1000);
-  const [items, setItems] = useState([]);
+  // const [items, setItems] = useState([]);
+  // const [todos, setTodos] = useLocalStorage('todos', []);
+  const [items, setItems] = useLocalStorage('todos', []);
 
   const deactivate = (collection, id) => {
     for (const elem of collection) {
@@ -16,17 +19,20 @@ export default function ItemList() {
   };
 
   const addTodo = useCallback((text) => {
-    setItems((prev) => ([...prev, {name: text, active: true, id: timestamp()}]));
-  }, [setItems]);
+    setItems([...items, {name: text, active: true, id: timestamp()}]);
+    // setTodos(items);
+  }, [items, setItems]);
 
   const delTodo = useCallback((id) => {
     setItems(items.filter((item) => item.id !== id));
+    // setTodos(items);
   }, [items, setItems]);
 
   const endTodo = useCallback((id) => {
     const item = deactivate(items, id);
     item.active = false;
     setItems([...items]);
+    // setTodos(items);
   }, [items, setItems]);
 
   const deleteItemClick = useCallback((ev) => {

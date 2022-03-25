@@ -31,7 +31,7 @@ function ItemAdd({handler}) {
 
     return (
         <div>
-            <Button variant="contained" onClick={clickAdd} sx={{p: 0, minWidth: 32}}>+</Button>
+            <Button variant="contained" onClick={clickAdd} sx={{minWidth: 32}}><i className='icon-plus'></i></Button>
             {add &&
                 <div>
                     <TextField id='add-item' label='Wpisz zadanie' variant='outlined' margin='dense' onChange={onChangeField} value={text} />
