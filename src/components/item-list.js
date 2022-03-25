@@ -6,8 +6,6 @@ import { useLocalStorage } from './use-localstorage';
 
 export default function ItemList() {
   const timestamp = () => Math.floor(Date.now() / 1000);
-  // const [items, setItems] = useState([]);
-  // const [todos, setTodos] = useLocalStorage('todos', []);
   const [items, setItems] = useLocalStorage('todos', []);
 
   const deactivate = (collection, id) => {
@@ -20,19 +18,16 @@ export default function ItemList() {
 
   const addTodo = useCallback((text) => {
     setItems([...items, {name: text, active: true, id: timestamp()}]);
-    // setTodos(items);
   }, [items, setItems]);
 
   const delTodo = useCallback((id) => {
     setItems(items.filter((item) => item.id !== id));
-    // setTodos(items);
   }, [items, setItems]);
 
   const endTodo = useCallback((id) => {
     const item = deactivate(items, id);
     item.active = false;
     setItems([...items]);
-    // setTodos(items);
   }, [items, setItems]);
 
   const deleteItemClick = useCallback((ev) => {
