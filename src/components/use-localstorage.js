@@ -1,5 +1,3 @@
-// zapis do/odczyt z LocalStorage
-
 import { useState } from "react"
 
 export const useLocalStorage = (name, defaultValue) => {
