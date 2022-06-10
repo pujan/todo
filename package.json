@@ -1,7 +1,11 @@
 {
   "name": "todo",
+  "description": "React to do application.",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "16.x"
+  },
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
@@ -41,6 +45,6 @@
   "devDependencies": {
     "autoprefixer": "^10.4.4",
     "postcss": "^8.4.12",
-    "tailwindcss": "^3.0.23"
+    "tailwindcss": "^3.1.1"
   }
 }
