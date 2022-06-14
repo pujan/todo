@@ -8,14 +8,6 @@ export default function ItemList() {
   const timestamp = () => Math.floor(Date.now() / 1000);
   const [items, setItems] = useLocalStorage('todos', []);
 
-  const deactivate = (collection, id) => {
-    for (const elem of collection) {
-      if (elem.id === id) {
-        return elem;
-      }
-    }
-  };
-
   const addTodo = useCallback((text) => {
     setItems([...items, {name: text, active: true, id: timestamp()}]);
   }, [items, setItems]);
@@ -25,20 +17,37 @@ export default function ItemList() {
   }, [items, setItems]);
 
   const endTodo = useCallback((id) => {
-    const item = deactivate(items, id);
-    item.active = false;
-    setItems([...items]);
+    setItems(items.map((item) => {
+      if (item.id === id) {
+        item.active = false;
+      }
+      return item;
+    }));
   }, [items, setItems]);
 
   const deleteItemClick = useCallback((ev) => {
     ev.preventDefault();
-    const id = ev.target.id.split('-')[1];
+    var id;
+
+    if (ev.target.id) {
+      id = ev.target.id.split('-')[1];
+    } else {
+      id = ev.target.parentNode.id.split('-')[1];
+    }
+
     delTodo(Number(id));
   }, [delTodo]);
 
   const endedItemClick = useCallback((ev) => {
     ev.preventDefault();
-    const id = ev.target.id.split('-')[1];
+    var id;
+
+    if (ev.target.id) {
+      id = ev.target.id.split('-')[1];
+    } else {
+      id = ev.target.parentNode.id.split('-')[1];
+    }
+
     endTodo(Number(id));
   }, [endTodo]);
 
