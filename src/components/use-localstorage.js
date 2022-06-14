@@ -6,7 +6,6 @@ export const useLocalStorage = (name, defaultValue) => {
     });
 
     const setValue = (value) => {
-        console.log('value:', value);
         window.localStorage.setItem(name, JSON.stringify(value));
         setState(value);
     };
