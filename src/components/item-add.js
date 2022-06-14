@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { Button, TextField } from '@mui/material';
+import { Button, Stack, TextField } from '@mui/material';
 
 
 function ItemAdd({handler}) {
@@ -41,11 +41,17 @@ function ItemAdd({handler}) {
         <div>
             <Button variant="contained" onClick={clickAdd} sx={{minWidth: 32}}><i className='icon-plus'></i></Button>
             {add &&
-                <div>
+                <Stack
+                    direction={{xs: 'column', md: 'row'}}
+                    justifyContent={{md: 'flex-start'}}
+                    alignItems={{md: 'flex-start'}}
+                    spacing={{xs: 1, md: 2}}
+                    sx={{mb: 2}}
+                >
                     <TextField id='add-item' label='Wpisz zadanie' required={true} autoFocus={true} error={error} variant='outlined' margin='dense' onChange={onChangeField} value={text} />
-                    <Button id='add-item-btn' className='btn' variant='contained' size='large' onClick={clickSend} sx={{ml: 2}}>Dodaj</Button>
-                    <Button id='add-item-cancel' className='btn' variant='contained' size='large' onClick={clickCancel} sx={{ml: 2}}>Anuluj</Button>
-                </div>
+                    <Button id='add-item-btn' className='btn' variant='contained' size='large' onClick={clickSend}>Dodaj</Button>
+                    <Button id='add-item-cancel' className='btn' variant='contained' size='large' onClick={clickCancel}>Anuluj</Button>
+                </Stack>
             }
         </div>
     )
