@@ -10,7 +10,7 @@ const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <Container sx={{px: 10, py: 5}}>
+    <Container fixed>
       <App />
     </Container>
   </React.StrictMode>
