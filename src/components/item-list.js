@@ -25,6 +25,15 @@ export default function ItemList() {
     }));
   }, [items, setItems]);
 
+  const editTodo = useCallback((id, text) => {
+    setItems(items.map((item) => {
+      if (item.id === id) {
+        item.name = text;
+      }
+      return item;
+    }));
+  }, [items, setItems]);
+
   const deleteItemClick = useCallback((ev) => {
     ev.preventDefault();
     var id;
@@ -55,7 +64,7 @@ export default function ItemList() {
     <div>
       <ItemAdd handler={addTodo} />
       <Stack direction='column' spacing={2} justifyContent='center' alignItems='stretch'>
-        {items.map((item, idx) => <Item item={item} deleted={deleteItemClick} finished={endedItemClick} key={idx} />)}
+        {items.map((item, idx) => <Item item={item} deleted={deleteItemClick} finished={endedItemClick} edited={editTodo} key={idx} />)}
       </Stack>
     </div>
   );
