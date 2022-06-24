@@ -44,11 +44,17 @@ export default function Item({item, deleted, finished, edited}) {
           sx={{alignItems: 'center'}}
         >
             {inputEdit && item.active ? (
-              <div>
+              <Stack
+                direction={{xs: 'column', md: 'row'}}
+                justifyContent={{md: 'flex-start'}}
+                alignItems={{md: 'flex-start'}}
+                spacing={{xs: 1, md: 2}}
+                sx={{mb: 2}}
+              >
                 <TextField id='edit-item' required={true} autoFocus={true} error={error} variant='outlined' margin='dense' onChange={onChangeField} defaultValue={text} />
                 <Button id='edit-item-btn' className='btn' variant='contained' size='large' onClick={clickUpdate} sx={{ml: 1}}>Zmień</Button>
                 <Button id='edit-item-cancel' className='btn' variant='contained' size='large' onClick={clickCancel} sx={{ml: 1}}>Anuluj</Button>
-              </div>
+              </Stack>
             ) : (
               <div className={'text-item' + (! item.active ? ' line-through': '')}>
                 <p>{item.name}</p>
