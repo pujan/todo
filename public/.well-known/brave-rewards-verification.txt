@@ -1,4 +1,4 @@
 This is a Brave Rewards publisher verification file.
 
 Domain: todo-bq6.pages.dev
-Token: 75d859661565374c004ec68fac1a4b6ffcbce206107e288ce77949d877b580f7
+Token: 489915a28cff55bf1be8263de68fea2a4346b7502f069c5f322bc9291b85ff61
