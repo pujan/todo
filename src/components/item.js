@@ -1,5 +1,5 @@
 import { Button, Stack, TextField } from '@mui/material';
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useState, useEffect } from 'react'
 
 export default function Item({item, deleted, finished, edited}) {
   const [text, setText] = useState(item.name);
@@ -33,6 +33,22 @@ export default function Item({item, deleted, finished, edited}) {
     setInputEdit(false);
     setText(item.name);
   }, [item.name, setInputEdit]);
+
+  useEffect(() => {
+    const listener = event => {
+        if (event.code === "Enter" || event.code === "NumpadEnter") {
+            event.preventDefault();
+            clickUpdate(event);
+        } else if (event.code === "Escape") {
+            event.preventDefault();
+            clickCancel(event);
+        }
+    };
+    document.addEventListener("keydown", listener);
+    return () => {
+      document.removeEventListener("keydown", listener);
+    };
+}, [clickUpdate, clickCancel]);
 
   return (
     <div className={'border border-zinc-400 rounded-lg p-5 my-2' + (! item.active ? ' finish' : '')}>

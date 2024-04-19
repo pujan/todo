@@ -39,16 +39,19 @@ function ItemAdd({handler}) {
 
     useEffect(() => {
         const listener = event => {
-          if (event.code === "Enter" || event.code === "NumpadEnter") {
-            event.preventDefault();
-            clickSend(event);
-          }
+            if (event.code === "Enter" || event.code === "NumpadEnter") {
+                event.preventDefault();
+                clickSend(event);
+            } else if (event.code === "Escape") {
+                event.preventDefault();
+                clickCancel(event);
+            }
         };
         document.addEventListener("keydown", listener);
         return () => {
           document.removeEventListener("keydown", listener);
         };
-      }, [clickSend]);
+    }, [clickSend, clickCancel]);
 
     return (
         <div>
