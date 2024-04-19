@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import { Button, Stack, TextField } from '@mui/material';
 
 
@@ -36,6 +36,19 @@ function ItemAdd({handler}) {
             setText(ev.target.value);
         },
     [setText]);
+
+    useEffect(() => {
+        const listener = event => {
+          if (event.code === "Enter" || event.code === "NumpadEnter") {
+            event.preventDefault();
+            clickSend(event);
+          }
+        };
+        document.addEventListener("keydown", listener);
+        return () => {
+          document.removeEventListener("keydown", listener);
+        };
+      }, [clickSend]);
 
     return (
         <div>
