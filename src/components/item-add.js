@@ -39,7 +39,7 @@ function ItemAdd({handler}) {
 
     return (
         <div>
-            <Button variant="contained" onClick={clickAdd} sx={{minWidth: 32}}><i className='icon-plus'></i></Button>
+            <Button variant="contained" onClick={clickAdd} sx={{minWidth: 32, mb: 2}}><i className='icon-plus'></i></Button>
             {add &&
                 <Stack
                     direction={{xs: 'column', md: 'row'}}
