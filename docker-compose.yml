@@ -1,0 +1,13 @@
+name: todo
+
+services:
+  react:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - '3000:3000'
+    volumes:
+      - './public/:/todo/public/'
+      - './src/:/todo/src/'
+    restart: always
