@@ -1,13 +1,12 @@
-FROM node:21-alpine
+FROM node:24-alpine
 
-WORKDIR /todo
+WORKDIR /app
 
-COPY public/ /todo/public/
-COPY src/ /todo/src/
-COPY package.json /todo/
-
+COPY package.json .
 RUN npm install
 
-EXPOSE 3000
+COPY . .
 
-CMD ["npm", "start"]
+EXPOSE 5173
+
+CMD [ "npm", "run", "dev" ]

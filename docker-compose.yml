@@ -1,4 +1,4 @@
-name: todo
+name: todo2
 
 services:
   react:
@@ -6,8 +6,8 @@ services:
       context: .
       dockerfile: docker/Dockerfile
     ports:
-      - '3000:3000'
+      - "5173:5173"
     volumes:
-      - './public/:/todo/public/'
-      - './src/:/todo/src/'
+      - "./public/:/app/public/"
+      - "./src/:/app/src/"
     restart: always

@@ -1,14 +1,18 @@
 .btn {
-  position: relative;
-  top: 14px;
+    position: relative;
+    top: 14px;
 }
 
 .text-item {
-  padding: 7px 10px 0 0;
-  font-size: 1.2rem;
+    padding: 7px 10px 0 0;
+    font-size: 1.2rem;
 }
 
 .finish {
-  background-color: #e4e3e3;
-  color: darkgray;
+    background-color: #e4e3e3;
+    color: darkgray;
+}
+.logo {
+    max-width: 1.8rem;
+    display: inline-block;
 }
